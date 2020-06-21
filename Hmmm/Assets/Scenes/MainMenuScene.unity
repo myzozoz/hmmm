@@ -530,7 +530,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cfff4f736ea54ac8bd6fa90e403c23d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  identifier: Level0
+  identifier: MovementProtoScene
 --- !u!1 &980635061
 GameObject:
   m_ObjectHideFlags: 0
