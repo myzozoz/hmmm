@@ -5,24 +5,24 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Queue<PlayerAction> actionQueue;
-    private PlayerAction activeAction;
     
     // Start is called before the first frame update
     void Start()
     {
         actionQueue = new Queue<PlayerAction>();
+        QueueAction(new Move(new Vector3(0, 0, 0), gameObject));
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if (activeAction != null)
+        if (actionQueue.Count == 0) return;
+
+        PlayerAction activeAction = actionQueue.Peek();
+        activeAction.Act(Time.fixedDeltaTime);
+
+        if (activeAction.IsCompleted())
         {
-            activeAction.Act();
-            if (activeAction.IsCompleted() && actionQueue.Count != 0)
-            {
-                activeAction = actionQueue.Dequeue();
-            }
+            activeAction = actionQueue.Dequeue();
         }
     }
 

@@ -4,15 +4,27 @@ using UnityEngine;
 
 public class  Move : PlayerAction
 {
+    private bool completed = false;
     private Vector3 moveTarget;
+    private GameObject targetObject;
 
-    public void Act()
+    public Move(Vector3 moveTarget, GameObject targetObject) {
+        this.moveTarget = moveTarget;
+        this.targetObject = targetObject;
+    }
+
+    public void Act(float fixedDeltaTime)
     {
-        Debug.Log("acting");
+        if (!this.completed) {
+            Debug.Log("acting: " + fixedDeltaTime);
+            if (this.moveTarget == targetObject.transform.position) {
+                this.completed = true;
+            }
+        }
     }
 
     public bool IsCompleted()
     {
-        return true;
+        return this.completed;
     }
 }

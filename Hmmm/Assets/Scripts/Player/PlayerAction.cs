@@ -4,6 +4,6 @@ using UnityEngine;
 
 public interface PlayerAction
 {
-    void Act();
+    void Act(float fixedDeltaTime);
     bool IsCompleted();
 }
