@@ -29,4 +29,12 @@ public class ActionTarget : MonoBehaviour
     {
         indicator.SetActive(false);
     }
+
+    public HashSet<string> GetPossibleActions()
+    {
+        HashSet<string> actions = new HashSet<string>();
+        if (moveTo) actions.Add("moveTo");
+        if (shoot) actions.Add("shoot");
+        return actions;
+    }
 }
